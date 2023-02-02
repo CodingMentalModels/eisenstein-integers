@@ -90,6 +90,10 @@ impl EisensteinInteger {
         EisensteinInteger { a: 0, b: 1 }
     }
 
+    pub fn get_coordinates(&self) -> (f32, f32) {
+        (self.a as f32, self.b as f32)
+    }
+    
 }
 
 #[cfg(test)]
@@ -125,6 +129,16 @@ mod test_eisenstein {
         let expected_b = 1 * 4 + 2 * 3 - 2 * 4;
         let expected = EisensteinInteger::new(expected_a, expected_b);
         assert_eq!(x * y, expected);
+
+    }
+
+    #[test]
+    fn test_eisenstein_integers_get_coordinates() {
+
+        assert_eq!(EisensteinInteger::zero().get_coordinates(), (0., 0.));
+        assert_eq!(EisensteinInteger::one().get_coordinates(), (1., 0.));
+        assert_eq!(EisensteinInteger::omega().get_coordinates(), (0., 1.));
+        assert_eq!(EisensteinInteger::new(17, 34).get_coordinates(), (17., 34.));
 
     }
 
